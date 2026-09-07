@@ -1,0 +1,6 @@
+@CloudFileManagerServer_HostAddress = http://localhost:5261
+
+# GET {{CloudFileManagerServer_HostAddress}}/weatherforecast/
+# Accept: application/json
+
+###

@@ -1,0 +1,12 @@
+bin/
+obj/
+
+.vs/
+.vs*
+*.user
+*.suo
+packages/
+*.nuget.props
+*.nuget.targets
+.DS_Store
+Thumbs.db
