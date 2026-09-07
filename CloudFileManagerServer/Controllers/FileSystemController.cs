@@ -152,5 +152,16 @@ namespace CloudFileManagerServer.Controllers
             var text = message + Environment.NewLine + Environment.NewLine + result;
             return Ok(text);
         }
+
+        [HttpGet("redo", Name = "Redo")]
+        public IActionResult Redo()
+        {
+            var message = FileManager.GetInstance().Redo();
+
+            var result = FileManager.GetInstance().ParseToPlainText();
+
+            var text = message + Environment.NewLine + Environment.NewLine + result;
+            return Ok(text);
+        }
     }
 }
