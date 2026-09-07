@@ -224,7 +224,7 @@ namespace CloudFileManagerServer
                     throw new InvalidOperationException("No item to paste");
                 }
 
-                var item = command is CutCommand cutCommand ? (command as CutCommand).CutItem : (command as CopyCommand).CopyItem;
+                var item = command is CutCommand ? (command as CutCommand).CutItem : (command as CopyCommand).CopyItem;
 
                 PasteCommand pc = new PasteCommand(Root, nodeName, item);
                 message = _commandManager.Execute(pc);
