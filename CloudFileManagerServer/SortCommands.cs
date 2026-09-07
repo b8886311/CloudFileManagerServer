@@ -84,11 +84,10 @@ namespace CloudFileManagerServer
     {
         public int Compare(INode? a, INode? b)
         {
-            Algorithm algo = Algorithm.GetInstance();
             long sizeA = 0;
-            sizeA = algo.FindNodeSizeDfs(a, sizeA);
+            sizeA = Algorithm.FindNodeSizeDfs(a, sizeA);
             long sizeB = 0;
-            sizeB = algo.FindNodeSizeDfs(b, sizeB);
+            sizeB = Algorithm.FindNodeSizeDfs(b, sizeB);
             int result = sizeA.CompareTo(sizeB);
             if (result != 0)
             {

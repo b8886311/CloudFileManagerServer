@@ -18,7 +18,7 @@
         public void Execute()
         {
             var item = this.FindCutItem(_nodeName);
-            this.CutItem = Algorithm.GetInstance().CloneNode(item);
+            this.CutItem = Algorithm.CloneNode(item);
             (item.Parent as DirectoryNode)?.RemoveChild(item);
         }
 
@@ -38,11 +38,11 @@
                 if (nodeName.Contains(".txt") || nodeName.Contains(".docx") ||
                    nodeName.Contains(".png") || nodeName.Contains(".jpg"))
                 {
-                    return Algorithm.GetInstance().FindFileDfs(_rootNode , nodeName);
+                    return Algorithm.FindFileDfs(_rootNode , nodeName);
                 }
                 else
                 {
-                    return Algorithm.GetInstance().FindFolderNode(_rootNode, nodeName);
+                    return Algorithm.FindFolderNode(_rootNode, nodeName);
                 }
             }
             catch (Exception ex)
@@ -70,13 +70,13 @@
         public void Execute()
         {
             var target  = this.FindTargetItem();
-            this.CopyItem = Algorithm.GetInstance().CloneNode(this.CopyItem);
+            this.CopyItem = Algorithm.CloneNode(this.CopyItem);
         }
 
         public void Undo()
         {
             var target = this.FindTargetItem();
-            this.CopyItem = Algorithm.GetInstance().CloneNode(this.CopyItem);
+            this.CopyItem = Algorithm.CloneNode(this.CopyItem);
         }
 
         private INode FindTargetItem()
@@ -89,12 +89,12 @@
                 if (_nodeName.Contains(".txt") || _nodeName.Contains(".docx") ||
                    _nodeName.Contains(".png") || _nodeName.Contains(".jpg"))
                 {
-                    return Algorithm.GetInstance().FindFileDfs(_rootNode, _nodeName);
+                    return Algorithm.FindFileDfs(_rootNode, _nodeName);
                 }
                 else
                 {
-                    return Algorithm.GetInstance().FindFolderNode(_rootNode, _nodeName);
-                }
+                    return Algorithm.FindFolderNode(_rootNode, _nodeName);
+                }   
             }
             catch (Exception ex)
             {
@@ -170,7 +170,7 @@
                 }
                 else
                 {
-                    return Algorithm.GetInstance().FindFolderNode(_rootNode, _nodeName);
+                    return Algorithm.FindFolderNode(_rootNode, _nodeName);
                 }
             }
             catch (Exception ex)

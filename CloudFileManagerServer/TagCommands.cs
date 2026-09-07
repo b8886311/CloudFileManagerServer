@@ -38,7 +38,7 @@
                     _nodeName.Contains(".png") || _nodeName.Contains(".jpg"))
                 {
 
-                    var node = Algorithm.GetInstance().FindFileDfs(_rootNode, _nodeName);
+                    var node = Algorithm.FindFileDfs(_rootNode, _nodeName);
                     if (node != null)
                     {
                         node.AppendTag(level);
@@ -50,7 +50,7 @@
                 }
                 else
                 {
-                    var node = Algorithm.GetInstance().FindFolderNode(_rootNode, _nodeName);
+                    var node = Algorithm.FindFolderNode(_rootNode, _nodeName);
                     if (node != null)
                     {
                         node.AppendTag(level);

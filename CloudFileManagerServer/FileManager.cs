@@ -49,24 +49,24 @@ namespace CloudFileManagerServer
         #region FindFile
         public ApiResponse<string> FindFileDfs(string fileName)
         {
-            var node = Algorithm.GetInstance().FindFileDfs(Root, fileName);
+            var node = Algorithm.FindFileDfs(Root, fileName);
 
             ApiResponse<string> response = new ApiResponse<string>()
             {
                 Result = node == null ? "" : node.GetFullPath(),
-                TraverseLog = Algorithm.GetInstance().TraverseLogger.GetTraverseLog()
+                TraverseLog = Algorithm.GetTraverseLog()
             };
             return response;
         }
         
         public ApiResponse<string> FindFileBfs(string fileName)
         {
-            var node = Algorithm.GetInstance().FindFileBfs(Root, fileName);
+            var node = Algorithm.FindFileBfs(Root, fileName);
 
             ApiResponse<string> response = new ApiResponse<string>()
             {
                 Result = node == null ? "" : node.GetFullPath(),
-                TraverseLog = Algorithm.GetInstance().TraverseLogger.GetTraverseLog()
+                TraverseLog = Algorithm.GetTraverseLog()
             };
             return response;
         }
@@ -76,24 +76,24 @@ namespace CloudFileManagerServer
 
         public ApiResponse<string[]> FindExtensionDfs(string extension)
         {
-            var files = Algorithm.GetInstance().FindExtensionDfs(Root, extension);
+            var files = Algorithm.FindExtensionDfs(Root, extension);
 
             ApiResponse<string[]> response = new ApiResponse<string[]>()
             {
                 Result = files.Select(f => f.GetFullPath()).ToArray(),  
-                TraverseLog = Algorithm.GetInstance().TraverseLogger.GetTraverseLog()
+                TraverseLog = Algorithm.GetTraverseLog()
             };
             return response;
         }
       
         public ApiResponse<string[]> FindExtensionBfs(string extension)
         {
-            var files = Algorithm.GetInstance().FindExtensionBfs(Root, extension);
+            var files = Algorithm.FindExtensionBfs(Root, extension);
 
             ApiResponse<string[]> response = new ApiResponse<string[]>()
             {
                 Result = files.Select(f => f.GetFullPath()).ToArray(),
-                TraverseLog = Algorithm.GetInstance().TraverseLogger.GetTraverseLog()
+                TraverseLog = Algorithm.GetTraverseLog()
             };
 
             return response;
@@ -104,12 +104,12 @@ namespace CloudFileManagerServer
 
         public ApiResponse<string> FindFolderSize(string folderName)
         {
-            var size = Algorithm.GetInstance().FindFolderSize(Root, folderName);
+            var size = Algorithm.FindFolderSize(Root, folderName);
             
             ApiResponse<string> response = new ApiResponse<string>()
             {
                 Result = SizeFormatter.Format(size),
-                TraverseLog = Algorithm.GetInstance().TraverseLogger.GetTraverseLog()
+                TraverseLog = Algorithm.GetTraverseLog()
             };
             return response;
         }

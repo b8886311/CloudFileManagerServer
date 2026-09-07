@@ -1,28 +1,17 @@
 ﻿namespace CloudFileManagerServer
 {
-    public class Algorithm
+    public static class Algorithm
     {
 
-        public TraverseLogger TraverseLogger { get; private set; }
+        private static TraverseLogger TraverseLogger = new TraverseLogger();
 
-        public Algorithm()
+        public static List<string> GetTraverseLog()
         {
-            this.TraverseLogger = new TraverseLogger();
-        }
-
-        public static Algorithm Instance { get; set; }
-
-        public static Algorithm GetInstance()
-        {
-            if (Instance == null)
-            {
-                Instance = new Algorithm();
-            }
-            return Instance;
+            return TraverseLogger.GetTraverseLog();
         }
 
         #region FindFile
-        public INode FindFileDfs(INode rootNode, string fileName)
+        public static INode FindFileDfs(INode rootNode, string fileName)
         {
             TraverseLogger.Initialize();
             TraverseLogger.Start();
@@ -33,7 +22,7 @@
             TraverseLogger.Stop();
             return node;
         }
-        public INode FindFileDfsCore(INode current, string fileName)
+        public static INode FindFileDfsCore(INode current, string fileName)
         {
             if (current is FileNode)
             {
@@ -64,7 +53,7 @@
             }
             return null;
         }
-        public INode FindFileBfs(INode rootNode, string fileName)
+        public static INode FindFileBfs(INode rootNode, string fileName)
         {
             TraverseLogger.Initialize();
             TraverseLogger.Start();
@@ -111,7 +100,7 @@
 
         #region FindExtension
 
-        public List<INode> FindExtensionDfs(INode rootNode, string extension)
+        public static List<INode> FindExtensionDfs(INode rootNode, string extension)
         {
             TraverseLogger.Initialize();
             TraverseLogger.Start();
@@ -123,7 +112,7 @@
             TraverseLogger.Stop();
             return files;
         }
-        public List<INode> FindExtensionDfsCore(INode current, string extension, List<INode> nodes)
+        public static List<INode> FindExtensionDfsCore(INode current, string extension, List<INode> nodes)
         {
             if (current is FileNode)
             {
@@ -149,7 +138,7 @@
             }
             return nodes;
         }
-        public List<INode> FindExtensionBfs(INode rootNode, string extension)
+        public static List<INode> FindExtensionBfs(INode rootNode, string extension)
         {
             TraverseLogger.Initialize();
             TraverseLogger.Start();
@@ -195,7 +184,7 @@
 
         #region FindFolderSize
 
-        public long FindFolderSize(INode rootNode, string folderName)
+        public static long FindFolderSize(INode rootNode, string folderName)
         {
             TraverseLogger.Initialize();
             TraverseLogger.Start();
@@ -213,7 +202,7 @@
             return size;
         }
 
-        public INode FindFolderNode(INode rootNode, string folderName)
+        public static INode FindFolderNode(INode rootNode, string folderName)
         {
             var queue = new Queue<INode>();
             queue.Enqueue(rootNode);
@@ -242,7 +231,7 @@
             return null;
         }
 
-        public long FindNodeSizeDfs(INode current, long folderSize)
+        public static long FindNodeSizeDfs(INode current, long folderSize)
         {
             if (current is FileNode)
             {
@@ -266,7 +255,7 @@
         }
         #endregion
 
-        public INode CloneNode(INode node)
+        public static INode CloneNode(INode node)
         {
             if (node is FileNode fileNode)
             {
