@@ -289,5 +289,28 @@
                 throw new InvalidOperationException("Unknown node type");
             }
         }
+
+        public static INode FindUnknowTypeItem(INode rootNode , string nodeName)
+        {
+            try
+            {
+                if (nodeName == "根目錄")
+                    throw new InvalidOperationException("無法操作根目錄");
+
+                if (nodeName.Contains(".txt") || nodeName.Contains(".docx") ||
+                   nodeName.Contains(".png") || nodeName.Contains(".jpg"))
+                {
+                    return Algorithm.FindFileDfs(rootNode, nodeName);
+                }
+                else
+                {
+                    return Algorithm.FindFolderNode(rootNode, nodeName);
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
