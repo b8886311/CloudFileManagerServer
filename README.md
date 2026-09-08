@@ -74,12 +74,12 @@ dotnet run
 
 ## 設計文件
 
-| 文件 | 說明 |
-|---|---|
-| UML 類別圖 — file_manager.png | API的進入點，包含各種方法的實現關係圖 |
-| UML 類別圖 — node.png | 根據節點和檔案的關係產生關聯圖並繼承介面，讓最終程式只依賴介面不依賴實體類別 |
-| UML 類別圖 — command_manager.png | 此為特殊功能類，根據用戶指令產生關聯圖並透過命令模式驅動程式，另支援undo/redo功能  |
-| ER Model — er_model.png | 將類別繼承關係映射至ER Model |
+| 文件 | 檔名 | 說明 |
+|---|---|---|
+| UML 類別圖 | file_manager.png | API的進入點，包含各種方法的實現關係圖 |
+| UML 類別圖 | node.png | 根據節點和檔案的關係產生關聯圖並繼承介面，讓最終程式只依賴介面不依賴實體類別 |
+| UML 類別圖 | command_manager.png | 此為特殊功能類，根據用戶指令產生關聯圖並透過命令模式驅動程式，另支援undo/redo功能  |
+| ER Model | er_model.png | 將類別繼承關係映射至ER Model |
 
 
 **`以上文件均附圖檔，可至Drawio網站開啟圖檔驗證`**
