@@ -82,18 +82,18 @@
     public class PasteCommand : ICommand
     {
         public string Description { get; private set; }
-        public INode _pasteItem { get; private set; }
+        private INode _pasteItem { get; set; }
         private INode _rootNode { get; set; }
         private string _nodeName { get; set; }
         private bool _isMove { get; set; }
         private DirectoryNode _target { get; set; }
         private INode _pastedNode { get; set; }
 
-        public PasteCommand(INode rootNode, string nodeName, INode _pasteItem, bool isMove = false)
+        public PasteCommand(INode rootNode, string nodeName, INode pasteItem, bool isMove = false)
         {
             this._rootNode = rootNode;
             this._nodeName = nodeName.Trim();
-            this._pasteItem = _pasteItem;
+            this._pasteItem = pasteItem;
             this._isMove = isMove;
             this.Description = $"貼上 {nodeName}";
         }
@@ -117,7 +117,7 @@
 
                 // 貼到自己或自己的子目錄底下會造成自我參照，
                 // 之後任何遞迴都會 StackOverflow
-                if (this.IsSelfOrDescendant(this._target, this._pastedNode))
+                if (this.IsSelfOrParent(this._target, this._pastedNode))
                 {
                     throw new InvalidOperationException("不能把資料夾貼到自己底下");
                 }
@@ -154,12 +154,12 @@
             }
         }
 
-        private bool IsSelfOrDescendant(INode candidate, INode ancestor)
+        private bool IsSelfOrParent(INode target, INode pastedNode)
         {
-            INode current = candidate;
+            INode current = target;
             while (current != null)
             {
-                if (ReferenceEquals(current, ancestor))
+                if (ReferenceEquals(current, pastedNode))
                 {
                     return true;
                 }

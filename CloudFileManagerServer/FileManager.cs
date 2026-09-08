@@ -225,8 +225,8 @@ namespace CloudFileManagerServer
                 }
 
                 var item = command is CutCommand ? (command as CutCommand).CutItem : (command as CopyCommand).CopyItem;
-
-                PasteCommand pc = new PasteCommand(Root, nodeName, item);
+                var isMove = command is CutCommand;
+                PasteCommand pc = new PasteCommand(Root, nodeName, item, isMove);
                 message = _commandManager.Execute(pc);
             }
             catch (Exception ex)
